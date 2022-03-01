@@ -1,38 +1,47 @@
 import {LitElement, html, css} from 'lit';
 import {customElement} from 'lit/decorators.js';
 
-@customElement('itoz-button')
-export class ItozButton extends LitElement {
+@customElement('itoz-input')
+export class ItozInput extends LitElement {
   static override styles = css`
-    button {
+    @keyframes color {
+      from {
+        background-position: 0px 0px;
+      }
+      to {
+        background-position: -200% 0px ;
+      }
+    }
+
+    div{
+      background: linear-gradient(135deg, #427eff 0%, #f13f79 50%, #427eff  100%);
+      background-size: 200% 70px;
+      padding:3px;
+      display:inline-block;
+      border-radius:20px;
+      animation: color 2s infinite linear;
+    }
+
+    input {
       font-size: 23px;
       font-weight: bold;
-      background-color: transparent;
+      background-color: ##ffffff55;
       border: none;
       letter-spacing: 2px;
       cursor: pointer;
       outline: none;
       appearance: none;
-      color: #fff;
-      padding: 12px 30px;
+      color: #009;
+      padding: 12px 16px;
       border-radius: 18px;
       overflow: hidden;
-      background: linear-gradient(135deg, #427eff 0%, #f13f79 70%);
       box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0);
       transition: all 0.15s ease;
     }
 
-    button:hover{
-      transform: translateY(-0px);
-      transform:translateY(-2px);
-      transition: all 0.35s ease;
-      background: linear-gradient(135deg, #427eff 0%, #f13f79 70%);
-      box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.5);
-    }
-
-    button:focus{
+    input:focus{
       outline:solid 2px #009;
-      outline-offset:2px;
+      outline-offset:5px;
     }
   `;
   constructor() {
@@ -41,9 +50,9 @@ export class ItozButton extends LitElement {
   }
   override render() {
     return html`
-      <button @click=${this._onClick} part="button">
-        <slot></slot>
-      </button>
+      <div>
+        <input type="text" @click=${this._onClick} />
+      </div>
     `;
   }
 
@@ -52,13 +61,12 @@ export class ItozButton extends LitElement {
   }
 
   private _onClick() {
-    this.dispatchEvent(new CustomEvent('count-changed'));
+    this.dispatchEvent(new CustomEvent('click'));
   }
-
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'itoz-button': ItozButton;
+    'itoz-input': ItozInput;
   }
 }
