@@ -1,4 +1,4 @@
-import{r as d,s as c,$ as f,n as u}from"./vendor.d014380a.js";const b=function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&o(n)}).observe(document,{childList:!0,subtree:!0});function i(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?t.credentials="include":e.crossorigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function o(e){if(e.ep)return;e.ep=!0;const t=i(e);fetch(e.href,t)}};b();var h=Object.defineProperty,x=Object.getOwnPropertyDescriptor,v=(s,r,i,o)=>{for(var e=o>1?void 0:o?x(r,i):r,t=s.length-1,n;t>=0;t--)(n=s[t])&&(e=(o?n(r,i,e):n(e))||e);return o&&e&&h(r,i,e),e};let l=class extends c{constructor(){super();this.addEventListener("focus",this._handleFocus)}render(){return f`
+import{r as d,s as f,$ as c,n as u}from"./vendor.d014380a.js";const b=function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))n(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const r of t.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&n(r)}).observe(document,{childList:!0,subtree:!0});function i(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?t.credentials="include":e.crossorigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function n(e){if(e.ep)return;e.ep=!0;const t=i(e);fetch(e.href,t)}};b();var h=Object.defineProperty,x=Object.getOwnPropertyDescriptor,v=(s,o,i,n)=>{for(var e=n>1?void 0:n?x(o,i):o,t=s.length-1,r;t>=0;t--)(r=s[t])&&(e=(n?r(o,i,e):r(e))||e);return n&&e&&h(o,i,e),e};let l=class extends f{constructor(){super();this.addEventListener("focus",this._handleFocus)}render(){return c`
       <button @click=${this._onClick} part="button">
         <slot></slot>
       </button>
@@ -30,10 +30,10 @@ import{r as d,s as c,$ as f,n as u}from"./vendor.d014380a.js";const b=function()
     }
 
     button:focus{
-      outline:solid 2px #0c0;
+      outline:solid 2px #009;
       outline-offset:2px;
     }
-  `;l=v([u("itoz-button")],l);var g=Object.defineProperty,m=Object.getOwnPropertyDescriptor,_=(s,r,i,o)=>{for(var e=o>1?void 0:o?m(r,i):r,t=s.length-1,n;t>=0;t--)(n=s[t])&&(e=(o?n(r,i,e):n(e))||e);return o&&e&&g(r,i,e),e};let a=class extends c{render(){return f`
+  `;l=v([u("itoz-button")],l);var g=Object.defineProperty,m=Object.getOwnPropertyDescriptor,_=(s,o,i,n)=>{for(var e=n>1?void 0:n?m(o,i):o,t=s.length-1,r;t>=0;t--)(r=s[t])&&(e=(n?r(o,i,e):r(e))||e);return n&&e&&g(o,i,e),e};let a=class extends f{render(){return c`
       <div>
         <div class='spinner'></div>
         <div class='slot'>
@@ -110,28 +110,40 @@ import{r as d,s as c,$ as f,n as u}from"./vendor.d014380a.js";const b=function()
       height:120px;
       color:#666;
     }
-  `;a=_([u("itoz-spinner")],a);var w=Object.defineProperty,y=Object.getOwnPropertyDescriptor,O=(s,r,i,o)=>{for(var e=o>1?void 0:o?y(r,i):r,t=s.length-1,n;t>=0;t--)(n=s[t])&&(e=(o?n(r,i,e):n(e))||e);return o&&e&&w(r,i,e),e};let p=class extends c{constructor(){super();this.addEventListener("focus",this._handleFocus)}render(){return f`
+  `;a=_([u("itoz-spinner")],a);var y=Object.defineProperty,w=Object.getOwnPropertyDescriptor,O=(s,o,i,n)=>{for(var e=n>1?void 0:n?w(o,i):o,t=s.length-1,r;t>=0;t--)(r=s[t])&&(e=(n?r(o,i,e):r(e))||e);return n&&e&&y(o,i,e),e};let p=class extends f{constructor(){super();this.addEventListener("focus",this._handleFocus)}render(){return c`
       <div>
         <input type="text" @click=${this._onClick} />
       </div>
     `}_handleFocus(){this.dispatchEvent(new CustomEvent("on-focus"))}_onClick(){this.dispatchEvent(new CustomEvent("click"))}};p.styles=d`
-  div{
-    background: linear-gradient(135deg, #427eff 0%, #f13f79 70%);
-    padding:2px;
-    display:inline-block;
-    border-radius:20px;
-  }
+    @keyframes color {
+      from {
+        background-position: 0px 0px;
+      }
+      to {
+        background-position: -200% 0px ;
+      }
+    }
+
+    div{
+      background: linear-gradient(135deg, #427eff 0%, #f13f79 50%, #427eff  100%);
+      background-size: 200% 70px;
+      padding:3px;
+      display:inline-block;
+      border-radius:20px;
+      animation: color 2s infinite linear;
+    }
+
     input {
       font-size: 23px;
       font-weight: bold;
-      background-color: white;
+      background-color: ##ffffff55;
       border: none;
       letter-spacing: 2px;
       cursor: pointer;
       outline: none;
       appearance: none;
-      color: #427eff;
-      padding: 12px 24px;
+      color: #009;
+      padding: 12px 16px;
       border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0);
@@ -139,7 +151,7 @@ import{r as d,s as c,$ as f,n as u}from"./vendor.d014380a.js";const b=function()
     }
 
     input:focus{
-      outline:solid 2px #00c;
-      outline-offset:4px;
+      outline:solid 2px #009;
+      outline-offset:5px;
     }
   `;p=O([u("itoz-input")],p);
